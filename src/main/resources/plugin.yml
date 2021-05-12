@@ -1,5 +1,5 @@
 name: DiscordBot
-version: ${project.version}
+version: test
 main: com.zoomdk.discordbot.Main
 api-version: 1.16
 depend: [ DiscordBotAPI, LuckPerms ]
