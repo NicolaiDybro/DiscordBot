@@ -48,7 +48,7 @@ public final class Main extends JavaPlugin {
             @Override
             protected boolean run(User user, MessageChannel messageChannel, Guild guild, String s, List<String> list) {
                 messageChannel.sendMessage("Dette er en test").complete();
-                Bukkit.broadcastMessage("test");
+                Bukkit.broadcastMessage("yes");
                 return false;
             }
             @Override
