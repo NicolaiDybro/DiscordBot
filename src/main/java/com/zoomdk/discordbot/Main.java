@@ -23,7 +23,7 @@ import java.util.Objects;
 
 public final class Main extends JavaPlugin {
     public static Bot bot;
-    public final String TOKEN = "ODI0MjQ3NTY2NjgxMTEyNTc3.YFsmXQ.IoWiORYygIFC5h2JLFwCQHVapAo";
+    public final String TOKEN = config.get().getString("discord-token");
     public final String PREFIX = "!";
     public void sendMessage(User user, String content) {
         user.openPrivateChannel()
@@ -32,6 +32,11 @@ public final class Main extends JavaPlugin {
     }
     @Override
     public void onEnable() {
+        assert TOKEN != null;
+        if (TOKEN.equals("xxxx")) {
+
+            getServer().getPluginManager().disablePlugin(this);
+        }
         Objects.requireNonNull(getCommand("link")).setExecutor(new linkCommand());
         Objects.requireNonNull(getCommand("unlink")).setExecutor(new unlinkCommand());
         Objects.requireNonNull(getCommand("linkupdate")).setExecutor(new linkupdateCommand());
@@ -48,7 +53,7 @@ public final class Main extends JavaPlugin {
             @Override
             protected boolean run(User user, MessageChannel messageChannel, Guild guild, String s, List<String> list) {
                 messageChannel.sendMessage("Dette er en test").complete();
-                Bukkit.broadcastMessage("yes");
+                System.out.println("[DiscordBot] Token virker ikke!");
                 return false;
             }
             @Override
