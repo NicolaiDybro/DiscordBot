@@ -1,3 +1,4 @@
 discord-token: 'xxxxx'
 discord-ranks:
   admin: '1234'
+  owner: '1234'
