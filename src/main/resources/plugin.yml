@@ -1,0 +1,14 @@
+name: DiscordBot
+version: ${project.version}
+main: com.zoomdk.discordbot.Main
+api-version: 1.16
+depend: [ DiscordBotAPI, LuckPerms ]
+authors: [ ZoomDK ]
+commands:
+  link:
+    description: Link command
+    aliases: [ verify ]
+  unlink:
+    description: unlink command
+  linkupdate:
+    description: Link Update Command
