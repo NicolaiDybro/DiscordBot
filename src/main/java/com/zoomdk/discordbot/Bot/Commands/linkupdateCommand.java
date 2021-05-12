@@ -1,5 +1,6 @@
 package com.zoomdk.discordbot.Bot.Commands;
 
+import com.zoomdk.discordbot.Bot.data.config;
 import com.zoomdk.discordbot.Bot.data.data;
 import com.zoomdk.discordbot.Main;
 import net.dv8tion.jda.api.entities.Guild;
@@ -34,11 +35,15 @@ public class linkupdateCommand implements CommandExecutor {
                 test = 2;
                 p.setOp(false);
             }
-            if (isPlayerInGroup(p, "default")) {
-                User user = Main.bot.getBot().getUserById(Objects.requireNonNull(data.get().getString(String.valueOf(p.getUniqueId()))));
-                Guild g = Main.bot.getBot().getGuildById("831153474145878056");
-                g.addRoleToMember(Objects.requireNonNull(g.getMember(user)), Objects.requireNonNull(g.getJDA().getRoleById("831175298837250129"))).queue();
-
+            Object[] groups = Objects.requireNonNull(config.get().getConfigurationSection("discordranks")).getKeys(false).toArray();
+            User user = Main.bot.getBot().getUserById(Objects.requireNonNull(data.get().getString(String.valueOf(p.getUniqueId()))));
+            for (Object key : groups) {
+                if (isPlayerInGroup(p, key.toString())) {
+                    Guild g = Main.bot.getBot().getGuildById("831153474145878056");
+                    String roleid = config.get().getString("discordranks." + key);
+                    assert g != null;
+                    g.addRoleToMember(Objects.requireNonNull(g.getMember(user)), Objects.requireNonNull(g.getJDA().getRoleById(roleid))).queue();
+                }
             }
             if (test == 2) {
                 p.setOp(true);

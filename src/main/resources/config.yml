@@ -1,4 +1,4 @@
-discord-token: 'xxxxx'
-discord-ranks:
+discordtoken: 'xxxxx'
+discordranks:
   admin: '1234'
   owner: '1234'

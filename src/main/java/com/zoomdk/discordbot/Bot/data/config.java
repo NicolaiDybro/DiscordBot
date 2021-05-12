@@ -36,7 +36,7 @@ public class config {
         try {
             customFile.save(file);
         }catch (IOException e) {
-            System.out.println("Could not load data.yml");
+            System.out.println("Could not load config.yml");
         }
     }
 
