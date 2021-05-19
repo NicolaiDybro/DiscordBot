@@ -29,6 +29,7 @@ public class unlinkCommand implements CommandExecutor {
                 assert user != null;
                 p.sendMessage(ChatColor.translateAlternateColorCodes('&', "&8&l【 &a&lLINK &8&l】&7Du har unlinket din account med: &c" + user.getName() + "#" + user.getDiscriminator()));
                 data.get().set(String.valueOf(p.getUniqueId()), null);
+                data.save();
             }
             else {
                 p.sendMessage(ChatColor.translateAlternateColorCodes('&', "&8&l【 &a&lLINK &8&l】&7Din account er ikke linket!"));

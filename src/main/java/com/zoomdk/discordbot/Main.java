@@ -10,6 +10,7 @@ import com.zoomdk.discordbot.Bot.Events;
 import com.zoomdk.discordbot.Bot.data.config;
 import com.zoomdk.discordbot.Bot.data.data;
 import com.zoomdk.discordbot.Bot.Commands.linkCommand;
+import com.zoomdk.discordbot.Bot.mcEvents.Join;
 import net.dv8tion.jda.api.Permission;
 import net.dv8tion.jda.api.entities.Guild;
 import net.dv8tion.jda.api.entities.MessageChannel;
@@ -36,7 +37,7 @@ public final class Main extends JavaPlugin {
     public void onEnable() {
         assert TOKEN != null;
 
-
+        getServer().getPluginManager().registerEvents(new Join(), this);
         Objects.requireNonNull(getCommand("link")).setExecutor(new linkCommand());
         Objects.requireNonNull(getCommand("unlink")).setExecutor(new unlinkCommand());
         Objects.requireNonNull(getCommand("linkupdate")).setExecutor(new linkupdateCommand());

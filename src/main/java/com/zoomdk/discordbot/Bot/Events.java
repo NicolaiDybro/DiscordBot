@@ -8,6 +8,7 @@ import net.dv8tion.jda.api.events.message.priv.PrivateMessageReceivedEvent;
 import net.dv8tion.jda.api.hooks.EventListener;
 import net.luckperms.api.event.LuckPermsEvent;
 import net.luckperms.api.event.node.NodeAddEvent;
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.entity.Player;
@@ -51,6 +52,7 @@ public class Events implements EventListener {
                     if (of.isOnline()) {
                         Player p = (Player) of;
                         p.sendMessage(ChatColor.translateAlternateColorCodes('&', "&8&l【 &a&lLINK &8&l】&7Din account er blevet linket med: &a" + ((PrivateMessageReceivedEvent) e).getAuthor().getName() + "#" + ((PrivateMessageReceivedEvent) e).getAuthor().getDiscriminator()));
+                        Bukkit.dispatchCommand(Bukkit.getServer().getConsoleSender(), "linkupdate " + p.getName());
                     }
                     data.get().set(String.valueOf(of.getUniqueId()), ((PrivateMessageReceivedEvent) e).getAuthor().getId());
                     data.save();
